@@ -1,40 +1,23 @@
+import { useEffect,useMemo } from "react";
 import { NavLink } from "react-router-dom";
-import TotalSum from "./TotalSum";
-// import { useNavigate } from "react-router-dom";
-// import "./budget-LOGO.png"
-// import { useEffect } from "react";
-function Nav() {
-  // const navigate= useNavigate()
-  // useEffect(() => {
 
-  //   const allWithClass = Array.from(
-  //     document.getElementsByClassName('colorCodeVALUETOTAL')
-  //   );
-  //   console.log(allWithClass);
-  // }, []);
+function Nav({ transactions }) {
+  let accumulatorArray = useMemo(() => [], []);
+console.log(accumulatorArray[accumulatorArray.length - 1])
 
+useEffect(()=>{
 
-          // if (Number(sumTOT) >= 1000) {
-          //   theStyle=({ color: "green" });
-          // }
-          // if (Number(sumTOT) < 0) {
-          //   theStyle=({ color: "red" });
-          // }
-          // if (Number(sumTOT) > 0 && Number(accumulator) < 1000) {
-          //   theStyle=({ color: "white" });
-          // }
-
-
-
-
+  transactions.reduce((accumulator, currentValue) => {
+    accumulator = Number(accumulator) + Number(currentValue.amount);
+    accumulatorArray.push(accumulator);
+    return null;
+  }, 0)},[accumulatorArray,transactions])
 
   return (
     <nav>
-      {/* <img onClick={() => {
-        navigate('/');
-      }} src={(require("./budget-LOGO.png"))} className="tot-LOGO" alt="totoro-logo"/> */}
+     
       <ul className="no-bullets">
-       <NavLink
+        <NavLink
           className="links"
           to="/"
           exact="true"
@@ -42,8 +25,7 @@ function Nav() {
         >
           Home
         </NavLink>
-
-      <NavLink
+        <NavLink
           className="links"
           to="/transactions"
           exact="true"
@@ -51,9 +33,6 @@ function Nav() {
         >
           All Transactions
         </NavLink>
-
-       
-
         <NavLink
           className="links"
           to="/transactions/new"
@@ -62,18 +41,28 @@ function Nav() {
         >
           New Form
         </NavLink>
-
-{/* <li><TotalSum/></li> */}
-        {/* <NavLink
-          className="links"
-          to="/transactions/:id"
-
-          style={({ isActive }) => ({
-            color: isActive ? "limegreen" : "black",
-          })}
-        >Transaction</NavLink> */}
-<span className="totalSUM"><TotalSum /></span>
-
+        {/* <span className="totalSUM"><TotalSum /></span> */}
+        {/* <span>{TotalSum}</span> */}
+        <strong>Total Balance</strong>:
+        {
+          <span
+            style={
+              accumulatorArray[accumulatorArray.length - 1] <= 0
+                ? {
+                    color:"red"
+                  }
+                : (accumulatorArray[accumulatorArray.length - 1] >= 1000
+                ? {color:"rgb(161, 240, 161)"}
+                : {color:"white"})
+            }
+          >
+            {transactions.reduce((accumulator, currentValue) => {
+              accumulator = Number(accumulator) + Number(currentValue.amount);
+              accumulatorArray.push(accumulator);
+              return accumulator;
+            }, 0)}
+          </span>
+        }
       </ul>
     </nav>
   );

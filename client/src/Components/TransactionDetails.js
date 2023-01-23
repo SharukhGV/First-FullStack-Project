@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 function TransactionDetails() {
@@ -10,18 +10,18 @@ function TransactionDetails() {
   // useEffect(() => {}, []);
   // const API = process.env.REACT_APP_API_URL;
 
-  
-
   ///promise
-  axios
-    .get(`${API}/transactions/${index}`)
-    .then((response) => {
-      setTransaction(response.data);
-    })
-    .catch((err) => {
-      navigate("/not-found");
-      // console.log(err);
-    });
+  useEffect(() => {
+    axios
+      .get(`${API}/transactions/${index}`)
+      .then((response) => {
+        setTransaction(response.data);
+      })
+      .catch((err) => {
+        // navigate("/not-found");
+        console.log(err);
+      });
+  }, [API,index]);
 
   // const handleDelete = () => {};
   const handleDelete = () => {
