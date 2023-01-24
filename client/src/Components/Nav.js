@@ -17,33 +17,33 @@ useEffect(()=>{
     <nav>
      
       <ul className="no-bullets">
-        <NavLink
+       <li> <NavLink
           className="links"
           to="/"
           exact="true"
           activestyle={{ color: "white" }}
         >
           Home
-        </NavLink>
-        <NavLink
+        </NavLink></li>
+        <li><NavLink
           className="links"
           to="/transactions"
           exact="true"
           activestyle={{ color: "white" }}
         >
           All Transactions
-        </NavLink>
-        <NavLink
+        </NavLink></li>
+       <li> <NavLink
           className="links"
           to="/transactions/new"
           exact="true"
           activestyle={{ color: "white" }}
         >
           New Form
-        </NavLink>
+        </NavLink></li>
         {/* <span className="totalSUM"><TotalSum /></span> */}
         {/* <span>{TotalSum}</span> */}
-        <strong>Total Balance</strong>:
+       <li> <strong>Total Balance</strong>:
         {
           <span
             style={
@@ -62,7 +62,7 @@ useEffect(()=>{
               return accumulator;
             }, 0)}
           </span>
-        }
+        }</li>
       </ul>
     </nav>
   );
