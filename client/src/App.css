@@ -351,6 +351,9 @@ li a:hover {
 /* MEDIA QUERY FOR SMALLER SCREEN SIZE */
 @media (min-width: 300px) and (max-width: 768px) {
  
+  a {
+    font-size: 10px;
+  }
 
 h1{
   font-size: large;
