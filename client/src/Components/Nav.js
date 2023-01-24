@@ -1,17 +1,20 @@
-import { useEffect,useMemo } from "react";
+// import { useEffect,useMemo } from "react";
+// import { useEffect } from "react";
+
 import { NavLink } from "react-router-dom";
 
+
 function Nav({ transactions }) {
-  let accumulatorArray = useMemo(() => [], []);
-console.log(accumulatorArray[accumulatorArray.length - 1])
+  // let accumulatorArray = useMemo(() => [], []);
+// console.log(accumulatorArray[accumulatorArray.length - 1])
 
-useEffect(()=>{
+// useEffect(()=>{
 
-  transactions.reduce((accumulator, currentValue) => {
-    accumulator = Number(accumulator) + Number(currentValue.amount);
-    accumulatorArray.push(accumulator);
-    return null;
-  }, 0)},[accumulatorArray,transactions])
+//   transactions.reduce((accumulator, currentValue) => {
+//     accumulator = Number(accumulator) + Number(currentValue.amount);
+//     accumulatorArray.push(accumulator);
+//     return null;
+//   }, 0)},[accumulatorArray,transactions])
 
   return (
     <nav>
@@ -43,7 +46,7 @@ useEffect(()=>{
         </NavLink></li>
         {/* <span className="totalSUM"><TotalSum /></span> */}
         {/* <span>{TotalSum}</span> */}
-       <li> <strong>Total Balance</strong>:
+       {/* <li className="totalHOVERCHANGE"> <strong>Total Balance</strong>:
         {
           <span
             style={
@@ -62,7 +65,7 @@ useEffect(()=>{
               return accumulator;
             }, 0)}
           </span>
-        }</li>
+        }</li> */}
       </ul>
     </nav>
   );
