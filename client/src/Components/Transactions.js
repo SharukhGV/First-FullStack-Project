@@ -17,7 +17,7 @@ function Transactions() {
 
   return (
     <section>
-      <table>
+      <table id="customers">
         <tbody>
           {transactions.map((individualTransactions, index) => {
             // const keyValueforTransaction = (Number({individualTransactions.date*index}))
