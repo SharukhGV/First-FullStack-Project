@@ -5,4 +5,4 @@ procfile = "Procfile"
 start = "cd client && npm start & cd ../server && nodemon server.js"
 
 [env]
-  PORT = "8080"
+  PORT = "3333"
