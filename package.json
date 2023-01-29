@@ -1,5 +1,1 @@
-{"scripts": {
-    "start": "cd client && npm start & cd ../server && nodemon server.js"
-  }
-
-}
+{"scripts":{"start":"cd client && npm start & cd ../server && nodemon server.js"},"dependencies":{"toml":"^3.0.0"}}
